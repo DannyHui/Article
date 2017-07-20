@@ -86,7 +86,7 @@
 	<!-- banner区 -->
 	<div class="banner">
 		<div class='content'>
-			<!-- 轮播图 -->
+			<!-- 轮播图  -->
 			<ul>
 				<li class='fl'><a href="javascript:void(0)"> <img
 						src="${basePath}/static/img/5.png " />
