@@ -5,7 +5,7 @@ import annotation.Table;
 
 @Table(tableName = "t_user",description="用户表")
 public class User {
-	@Column(type = "varchar(30)", field = "id", description = "用户ID", primaryKey = true, defaultNull = false)
+	@Column(type = "varchar(32)", field = "id", description = "用户ID", primaryKey = true, defaultNull = false)
 	private String id;
 	@Column(type = "VARCHAR(20)", field = "username", description = "用户名")
 	private String username;
