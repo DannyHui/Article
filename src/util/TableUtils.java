@@ -14,11 +14,14 @@ import annotation.Table;
 public class TableUtils {
 	 public static String getCreateTableSQl(Class<?> clazz){
 	        StringBuilder sb = new StringBuilder();
-	        sb.append("create table ");
+	        
 	        //获取表名
 	        Table table = (Table) clazz.getAnnotation(Table.class);
 	        String tableName = table.tableName();
 	        String tableDesc = table.description();
+	        
+	        sb.append("DROP TABLE IF EXISTS '"+tableName+"';\n");
+	        sb.append("create table ");
 	        sb.append(tableName).append("(\n");
 	        
 	        Field[] fields = clazz.getDeclaredFields();
