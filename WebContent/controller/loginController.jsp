@@ -1,13 +1,11 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,service.LoginService,util.StringUtils,bean.*" pageEncoding="UTF-8"%>
 <%
 
 	//获取客户端传递过来参数
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
-	/* System.out.println(username);
-	System.out.println(password); */
 	//如果用户名和密码不为空
-	/* if(StringUtils.isEmpty(username) || StringUtils.isEmpty(password)){
+	if(StringUtils.isEmpty(username) || StringUtils.isEmpty(password)){
 		out.print("-1");//错误码-1 :   用户名和密码不能为空！
 	}else{
 		//初始化LoginService
@@ -26,6 +24,6 @@
 				session.setAttribute("user", user);
 				session.setAttribute("username", user.getUsername());
 			}
-	} */
+	}
 	
 %>
