@@ -4,7 +4,6 @@
 <%@ page language="java" import="service.ArticleService"%>
 <%@ page language="java" import="service.CommentService"%>
 
-
 <%
 	ArticleService articleService = new ArticleService();
 	String id = request.getParameter("id");
@@ -17,6 +16,7 @@
 	pageContext.setAttribute("comments", list);
 	System.out.println(list);
 %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@include file="common/taglib.jsp"%>

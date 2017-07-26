@@ -13,7 +13,7 @@ public class Category {
 	@Column(type = "VARCHAR(20)", field = "name", description = "分类名称")
 	private String name;
 	
-	private List<Map<String,Object>> ArticleList;
+	private List<Map<String,Object>> articleList;
 	public Integer getId() {
 		return id;
 	}
@@ -26,10 +26,11 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Map<String,Object>> getArticleList() {
-		return ArticleList;
+	public List<Map<String, Object>> getArticleList() {
+		return articleList;
 	}
-	public void setArticleList(List<Map<String,Object>> articleList) {
-		ArticleList = articleList;
+	public void setArticleList(List<Map<String, Object>> articleList) {
+		this.articleList = articleList;
 	}
+	
 }

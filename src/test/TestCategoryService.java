@@ -13,6 +13,8 @@ public class TestCategoryService {
 	{
 		CategoryService categoryService=new CategoryService();
 		List<Category> list = categoryService.getCategoryArticleInfo();
-		System.out.println(list.toString());
+		for(Category category : list) {
+			  System.out.println(category.getName()+"\n");
+			}
 	}
 }

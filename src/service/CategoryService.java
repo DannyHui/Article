@@ -24,7 +24,9 @@ public class CategoryService {
 			ctg.setId(categoryid);
 			ctg.setName(m.get("name").toString());
 			List<Map<String,Object>> articleList=articleService.getArticlesByCategoryId(categoryid, 0, 6);
-			ctg.setArticleList(articleList);
+			if(articleList.size()>0){
+				ctg.setArticleList(articleList);
+			}
 			listCategory.add(ctg);
 		}
 		return listCategory;

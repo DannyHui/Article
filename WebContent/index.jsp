@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page language="java" import="java.util.*"%>
-<%@ page language="java" import="service.ArticleService"%>
+<%@ page language="java" import="service.CategoryService,bean.*"%>
 <%
-	ArticleService articleService = new ArticleService();
+	//查询出编程代码类的相关文章
+/* 	List<Map<String, Object>> articles = articleService.getArticlesByCategoryId(2, 0, 6);
+	pageContext.setAttribute("articles", articles); 
+	 */
+	CategoryService categoryService = new CategoryService();
+	//查询出编程代码类的相关文章
+	List<Category> categorys = categoryService.getCategoryArticleInfo();
+	pageContext.setAttribute("categorys", categorys);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@include file="common/taglib.jsp"%>
@@ -125,28 +132,25 @@
 
 	<!-- 内容区域（待做） -->
 	<div style='border: 1px solid #ccc'>
+		<c:forEach items="${categorys}" var="category">
+			<div class='category'>
+				<div class='title'>${category.name}</div>
+				<ul class='items'>
 
-		<div class='category'>
-			<div class='title'>编程代码类</div>
-			<ul class='items'>
-				<%
-					//查询出编程代码类的相关文章
-					List<Map<String, Object>> articles = articleService.getArticlesByCategoryId(2, 0, 6);
-					pageContext.setAttribute("articles", articles);
-				%>
-				<c:forEach items="${articles}" var="item">
-					<li class='item' onclick="detail('${item.id}');">
-						<div class='item-banner'>
-							<div class='item-header'>${item.header}</div>
-							<div class='item-name' title="${item.name}">${item.name}</div>
-							<div class='item-author'>@${item.author} 著</div>
-						</div>
-						<div class='item-description'>${item.description}</div>
-					</li>
-				</c:forEach>
-				<div style='clear: both'></div>
-			</ul>
-		</div>
+					<c:forEach items="${category.articleList}" var="item">
+						<li class='item' onclick="detail('${item.id}');">
+							<div class='item-banner'>
+								<div class='item-header'>${item.header}</div>
+								<div class='item-name' title="${item.name}">${item.name}</div>
+								<div class='item-author'>@${item.author} 著</div>
+							</div>
+							<div class='item-description'>${item.description}</div>
+						</li>
+					</c:forEach>
+					<div style='clear: both'></div>
+				</ul>
+			</div>
+		</c:forEach>
 	</div>
 
 	<!-- 底部页面 -->
@@ -199,12 +203,12 @@
 			});
 		}
 		//打开详情页
-		function detail(id){
-		    var a = document.createElement("a");
-		    a.href = "detail.jsp?id=" + id; 
-		    console.log(a);
-		    a.target = '_new'; //指定在新窗口打开
-		    a.click();//触发打开事件
+		function detail(id) {
+			var a = document.createElement("a");
+			a.href = "detail.jsp?id=" + id;
+			console.log(a);
+			a.target = '_new'; //指定在新窗口打开
+			a.click();//触发打开事件
 		}
 	</script>
 
